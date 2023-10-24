@@ -1,3 +1,5 @@
+/* hdf2emu - image converter - (c) Claude Schwarz
+*/
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
