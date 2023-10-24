@@ -31,5 +31,5 @@ x86_64-w64-mingw32-gcc hdf2emu68.c -O3 -o hdf2emu68.exe
 
 For Linux :
 ```
-gcc hdf2emu68.c -O3 -o hdf2emu68.exe
+gcc hdf2emu68.c -O3 -o hdf2emu68
 ```
