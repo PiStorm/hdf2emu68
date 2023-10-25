@@ -8,6 +8,9 @@
 #define SECTOR_SIZE 512
 #define CHUNK_SIZE 1024
 
+#if __MINGW32__
+#include <sys/stat.h>
+#endif
 
 typedef struct {
     uint8_t bootstrap[446];
@@ -80,9 +83,15 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+#if __MINGW32__
+    struct __stat64 st; 
+    _stat64(sourceImage, &st);
+    uint64_t partition2SizeMB = (st.st_size / (1024*1024) + 1);
+#else
     fseek(sourceFile, 0, SEEK_END);
     uint64_t partition2SizeMB = (ftell(sourceFile) / (1024*1024) + 1);
     rewind(sourceFile);
+#endif
 
     printf("Source Image Size: %ldMB\n",(long)partition2SizeMB);
 
@@ -122,8 +131,14 @@ int main(int argc, char* argv[]) {
 
     printf("Disk image created successfully.\n");
 
+#if __MINGW32__
+    struct __stat64 stout; 
+    _stat64(outputImage, &stout);
+    uint64_t finalSizeMB = (stout.st_size / (1024*1024) + 1);
+#else
     fseek(outputFile, 0, SEEK_END);
     uint64_t finalSizeMB = (ftell(outputFile) / (1024*1024)+1);
+#endif
   
     printf("\n");
     printf("Final Disk image size: %ldMB\n",(long)finalSizeMB);
