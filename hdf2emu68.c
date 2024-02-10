@@ -125,7 +125,7 @@ void createMBR(uint8_t *mbr, uint64_t partition2SizeMB) {
   mbrData->signature = 0xAA55;
 
   // Set up the partition table
-  createPartition(mbr + 0x01BE, 0x80, 0x0C, 0x800,
+  createPartition(mbr + 0x01BE, 0x80, 0x0E, 0x800,
                   (64 * 1024 * 1024) / SECTOR_SIZE);
   createPartition(mbr + 0x01CE, 0x00, 0x76,
                   0x800 + (64 * 1024 * 1024) / SECTOR_SIZE,
