@@ -1,2 +1,2 @@
 all:
-	x86_64-w64-mingw32-gcc hdf2emu68.c my.res fatfs/diskio.c  fatfs/ff.c -I fatfs -O3 -o hdf2emu68.exe
+	x86_64-w64-mingw32-gcc hdf2emu68.c my.res fatfs/diskio.c  fatfs/ff.c  fatfs/ffunicode.c -I fatfs -O3 -o hdf2emu68.exe

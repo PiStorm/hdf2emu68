@@ -21,6 +21,7 @@ typedef enum {
 	RES_PARERR		/* 4: Invalid Parameter */
 } DRESULT;
 
+extern char * OutputFilename;	/* Volume - Partition mapping table */
 
 /*---------------------------------------*/
 /* Prototypes for disk control functions */

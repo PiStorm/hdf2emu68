@@ -40,9 +40,9 @@ DSTATUS disk_initialize(BYTE pdrv /* Physical drive nmuber to identify the drive
   if (fno != NULL)
     return 0;
 
-  fno = fopen("emu68_converted.img", "r+b");
+  fno = fopen(OutputFilename, "r+b");
   if (!fno) {
-    fno = fopen("emu68_converted.img", "w+b");
+    fno = fopen(OutputFilename, "w+b");
   }
 
   if (fno != NULL)
